@@ -28,14 +28,19 @@ const Quiz = () => {
                 ?
                     <div>
                         <h2>{currentQuestion.question}</h2>
-                        <ul>
-                            {
-                                currentQuestion.options?.map((option, index) => (
-                                <li key={index}>{option}</li>
-                                ))
-                            }
-                        </ul>
-                        
+                        {
+                            currentQuestion.options?.map((option, index) => (
+                                <div key={index}>
+                                    <input
+                                        type="radio"
+                                        id={`option-${index}`}
+                                        name="quiz-option"
+                                        value={index}
+                                    />
+                                    <label htmlFor={`option-${index}`}>{option}</label>
+                                </div>
+                            ))
+                        }
                     </div> 
                 :
                     <p>Loading Question...</p>
