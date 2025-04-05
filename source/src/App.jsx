@@ -1,12 +1,18 @@
-import Quiz from './components/Quiz.jsx';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import StartPage from './components/StartPage';
+import QuizPage from './components/QuizPage';
+import ConfirmPage from './components/ConfirmPage';
 
 function App() {
-  return (
-    <div>
-      <h1>Prakriti Analysis</h1>
-      <Quiz />
-    </div>
-  );
+    return (
+        <Router>
+            <Routes>
+                <Route path='/' element={<StartPage />} />
+                <Route path='/Quiz' element={<QuizPage />} />
+                <Route path='/Confirm' element={<ConfirmPage />} />
+            </Routes>
+        </Router>
+    );
 }
 
-export default App
+export default App;

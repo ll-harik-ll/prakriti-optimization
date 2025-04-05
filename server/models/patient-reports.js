@@ -7,7 +7,7 @@ const ResponseSchema = new mongoose.Schema({
 });
 
 const ReportSchema = new mongoose.Schema({
-    patient_id: { type: Number, unique: true}, // Must add required: true when integrating with login & registration
+    patient_id: { type: Number}, // Must add required: true when integrating with login & registration
     responses: { type: [ResponseSchema], required: true }
 });
 

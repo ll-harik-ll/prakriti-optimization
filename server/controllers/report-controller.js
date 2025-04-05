@@ -2,8 +2,8 @@ import Reports from "../models/patient-reports.js";
 
 const SaveReport = async (req, res) => {
     try {
-        const repsonses = req.body;
-        const newReport = new Reports(repsonses);
+        const responses = req.body;
+        const newReport = new Reports(responses);
         await newReport.save();
         res.status(201).json({ message: `Report Saved Successfully` });
     } catch (error) {
