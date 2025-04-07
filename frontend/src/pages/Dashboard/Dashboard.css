@@ -1,0 +1,287 @@
+html {
+    scroll-behavior: smooth;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Quicksand:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,600&display=swap');
+
+.card { 
+    padding:10%;
+    background: linear-gradient(135deg, #fff9dc, #bfe3aa, #c9ef9d, #f7c29a);
+    height: 100vh;
+    background-size: cover;
+    box-sizing: border-box;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    animation: fadeInBg 2s ease-in-out;
+    
+}
+
+@keyframes fadeInBg {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.firstpage {
+    border: 2px solid rgb(102, 98, 98);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+    text-align: center;
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 100%;
+    background-color: white;
+    animation: slideInUp 1.2s ease-in-out;
+     box-shadow:20px 20px;
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.innercontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 1.5s ease;
+   
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.heading {
+    font-family: 'Raleway', sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 2.8rem;
+    animation: textDrop 1s ease forwards;
+}
+
+@keyframes textDrop {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.desc1, .desc2 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    animation: fadeInText 2s ease-in-out;
+}
+
+@keyframes fadeInText {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.btncontent {
+    width: 300px;
+    height: 50px;
+    margin-top: 20px;
+    border: 0px;
+    border-radius: 20px;
+    background-color: rgb(19, 58, 41);
+    color: azure;
+    font-family: monospace;
+    font-size: 19px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btncontent:hover {
+    background-color: #2e7d59;
+    transform: scale(1.05);
+}
+.card2 {
+    padding:11%;
+    height: 100vh;
+    background-size: cover;
+    box-sizing: border-box;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction:column;
+    align-items: center;
+    text-align: center;
+    animation: fadeInBg 2s ease-in-out;
+    flex-wrap: wrap; /* allow wrapping on small screens */
+}
+
+.secondpage {
+    margin-top:5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.innercard {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap; /* wrap items in small screens */
+ 
+    
+}
+
+.innercontent {
+    background: linear-gradient(136deg, #e0f4d7, #baebce);
+    width: 300px;
+    height: 320px;
+    margin: 5px;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+    margin:10px 10px 10px 10px;
+    
+}
+
+.innercontent:hover {
+    transform: scale(1.05);
+}
+.cardheading{
+    font-size:30px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight:bold;
+    font-style:oblique;
+}
+@media screen and (max-width: 1168px) {
+    .card2 {
+        flex-direction: column;
+        padding: 10%;
+        height: auto;
+    }
+
+    .innercard {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .innercontent {
+        width: 420px;
+        height: 60px;
+        padding: 20px;
+        
+    }
+    
+}
+.image{
+    width:100px;
+    height:100px;
+}
+.horizontal-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    background-image:url("https://www.hdfcergo.com/images/default-source/wellness-corner/yoga-detoxification_m.jpg");
+    flex-wrap: wrap;
+    background-repeat: no-repeat;      
+    background-size: contain;           
+    background-position: center;
+  }
+  .card3{
+    height: 100vh;
+    background-size: cover;
+    box-sizing: border-box;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction:column;
+    align-items: center;
+    text-align: center;
+    animation: fadeInBg 2s ease-in-out;
+    flex-wrap: wrap;
+    background-color:#e8f2ec;
+    background-image:url("https://www.hdfcergo.com/images/default-source/wellness-corner/yoga-detoxification_m.jpg");
+    background-repeat: no-repeat;      
+    background-size: contain;           
+    background-position: center;
+    position: relative;
+
+  }
+  
+.dosha{
+    width:200px;
+    height:200px;
+    background-color:#fafafa;
+    border-radius:50%;
+    position:absolute;
+    box-shadow:10px 10px 30px rgb(4, 100, 75);
+    animation: float 3s ease-in-out infinite;
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+    margin:10px 10px 10px;
+    cursor:pointer;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(20px); }
+    100% { transform: translateY(0px); }
+  }
+  
+.left-center {
+    left: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .top-center {
+    top: 10%;
+    transform: translateX(-50%);
+  }
+  
+  .right-center {
+    right: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .page3headings
+  {
+    font-family:monospace;
+    font-size:50px;
+    font-style:italic;
+    font-stretch: expanded;
+    color:brown;
+    transition: transform 0.4s ease-in-out 0.3s;
+    
+  }
+  .page3headings:hover{
+    
+        transform: scale(1.35);
+  }
