@@ -2,7 +2,7 @@ import express from 'express';
 
 import CORS_MIDDLEWARE from './config/cors.js';
 import SESSION_MIDDLEWARE from './config/sessions.js';
-import CONNECT_DB from './config/db.js';
+import { CONNECT_DB } from './config/db.js';
 import PORT from './config/port.js';
 
 import questionRoute from './routes/question-route.js';

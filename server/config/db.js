@@ -15,7 +15,7 @@ async function CONNECT_DB() {
     }
 }
 
-const MONGO_STORE = MongoStore.create({
+const MONGO_STORE = async () => MongoStore.create({
     client: mongoose.connection.getClient(),
     collectionName: 'sessions'
 });
