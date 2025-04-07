@@ -7,6 +7,7 @@ import PORT from './config/port.js';
 
 import questionRoute from './routes/question-route.js';
 import reportRoute from './routes/report-route.js';
+import accountRoute from './routes/account-route.js';
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use(express.json());
 // Mounting API Routes
 app.use('/api', questionRoute);
 app.use('/api', reportRoute);
+app.use('/api', accountRoute);
 
 // Starting Server
 app.listen(PORT, () => {
