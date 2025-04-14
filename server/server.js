@@ -11,20 +11,22 @@ import accountRoute from './routes/account-route.js';
 
 const app = express();
 
-// Connecting Mongoose
-CONNECT_DB();
+(async () => {
+    // Connecting Mongoose
+    await CONNECT_DB();
 
-// Setting Up Middleware
-app.use(CORS_MIDDLEWARE);
-app.use(SESSION_MIDDLEWARE)
-app.use(express.json());
+    // Setting Up Middleware
+    app.use(CORS_MIDDLEWARE);
+    app.use(await SESSION_MIDDLEWARE());
+    app.use(express.json());
 
-// Mounting API Routes
-app.use('/api', questionRoute);
-app.use('/api', reportRoute);
-app.use('/api', accountRoute);
+    // Mounting API Routes
+    app.use('/api', questionRoute);
+    app.use('/api', reportRoute);
+    app.use('/api', accountRoute);
 
-// Starting Server
-app.listen(PORT, () => {
-    console.log(`Server Running on port ${PORT}`);
-});
+    // Starting Server
+    app.listen(PORT, () => {
+        console.log(`Server Running on port ${PORT}`);
+    });
+})();

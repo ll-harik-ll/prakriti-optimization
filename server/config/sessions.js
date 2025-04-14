@@ -6,8 +6,10 @@ dotenv.config();
 const SESSION_SECRET = process.env.SESSION_SECRET;
 
 const SESSION_MIDDLEWARE = async () => {
+    console.log('Initializing session middleware...');
     const STORE = await MONGO_STORE();
-
+    console.log('Store resolved, setting up session middleware...');
+    
     return session({
         secret: SESSION_SECRET,
         resave: false,

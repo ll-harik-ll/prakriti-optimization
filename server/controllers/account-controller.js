@@ -33,10 +33,16 @@ const loginUser = async (req, res) => {
             return res.status(401).json({ message: 'Incorrect Password' });
         }
 
+        if ( !req.session ) {
+            return res.status(500).json({ message: 'Session not Initialised properly' });
+        }
+
         req.session.userID = existingUser._id;
         req.session.username = existingUser.username;
 
         res.status(200).json({ message: 'Login Successful!' });
+        console.log('Session Contents: ', req.session);
+        
     } catch (error) {
         console.error('Error during sign-in: ', error);
         res.status(500).json({ message: 'Internal Server Error' });
