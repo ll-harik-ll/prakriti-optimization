@@ -1,4 +1,4 @@
-import Reports from "../models/patient-reports.js";
+import Reports from '../models/patient-reports.js';
 
 const SaveReport = async (req, res) => {
     try {
