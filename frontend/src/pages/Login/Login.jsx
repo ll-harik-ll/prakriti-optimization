@@ -4,13 +4,17 @@ import axios from "axios";
 import "./styles.css";
 
 const Login = () => {
-    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
     const handleLogin = async () => {
         try {
-            const res = await axios.post("http://localhost:5000/auth/login", { email, password });
-            localStorage.setItem("token", res.data.token);
+            const res = await axios.post(
+                "http://localhost:5000/api/login",
+                { username, password },
+                { withCredentials: true }
+            );
+            
             navigate("/Dashboard");
         } catch (err) {
             console.error("Login failed:",err.message);
@@ -20,17 +24,14 @@ const Login = () => {
 
     return (
         <>
-
-        <div className ="login page">
-            
-         <div className ="logincard">
-            
-             <h2>Login</h2>
-            <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
-            <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
-            <button onClick={handleLogin}  >Login</button> 
-          </div>
-        </div>
+            <div className ="login page">
+                <div className ="logincard">
+                    <h2>Login</h2>
+                    <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} />
+                    <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+                    <button onClick={handleLogin}>Login</button> 
+                </div>
+            </div>
         </>
     );
 }
