@@ -1,10 +1,13 @@
 import React from "react";
 import "./Dashboard.css"
 import Navbar from "../Navbar/Navbar";
+import { useNavigate } from "react-router-dom";
 function Dashboard() {
     function scrollToNext(pageId) {
         document.getElementById(pageId).scrollIntoView({ behavior: 'smooth' });
     }
+
+    const navigate = useNavigate();
 
     return (
         <>
@@ -79,7 +82,7 @@ function Dashboard() {
                     <h1 className="page3headings">KAPHAM</h1>
                 </div>
 
-                <button className="btncontent">TEST YOUR PRAKRUTI</button>
+                <button className="btncontent" onClick={() => {navigate('/Start')}}>TEST YOUR PRAKRUTI</button>
             </div>
         </>
     );

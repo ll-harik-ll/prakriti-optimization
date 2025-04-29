@@ -2,10 +2,14 @@ import Reports from '../models/patient-reports.js';
 
 const SaveReport = async (req, res) => {
     try {
+        if (!req.session?.userID || !req.session?.username) {
+            return res.status(401).json({ message: "Unauthorized. Please login again." });
+        }
+        
         const newReport = new Reports({
             userID: req.session.userID,
             username: req.session.username,
-            responses: req.body
+            responses: req.body.responses
         });
         await newReport.save();
         res.status(201).json({ message: `Report Saved Successfully` });
