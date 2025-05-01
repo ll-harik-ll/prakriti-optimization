@@ -64,9 +64,9 @@ const QuizPage = () => {
                                         type="radio"
                                         id={`option-${index}`}
                                         name="quiz-option"
-                                        value={index}
+                                        value={option.value}
                                     />
-                                    <label htmlFor={`option-${index}`}>{option}</label>
+                                    <label htmlFor={`option-${index}`}>{option.text}</label>
                                 </div>
                             ))
                         }

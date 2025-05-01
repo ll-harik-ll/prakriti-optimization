@@ -1,4 +1,5 @@
 import Reports from '../models/patient-reports.js';
+import EvaluateReport from '../services/report-evaluation.js';
 
 const SaveReport = async (req, res) => {
     try {
@@ -9,7 +10,8 @@ const SaveReport = async (req, res) => {
         const newReport = new Reports({
             userID: req.session.userID,
             username: req.session.username,
-            responses: req.body.responses
+            responses: req.body.responses,
+            prakriti: EvaluateReport(req.body.responses)
         });
         await newReport.save();
         res.status(201).json({ message: `Report Saved Successfully` });
