@@ -16,7 +16,7 @@ const Login = () => {
                 { withCredentials: true }
             );
             
-            navigate("/Dashboard");
+            navigate("/Layout/Dashboard");
         } catch (err) {
             console.error("Login failed:",err.message);
         }
