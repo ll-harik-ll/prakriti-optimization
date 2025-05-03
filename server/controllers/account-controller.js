@@ -61,4 +61,11 @@ const logoutUser = (req, res) => {
     });
 };
 
-export { registerUser, loginUser, logoutUser };
+const checkAuth = (req,res) => {
+    if (req.session.userID )
+        res.status(200).json({ authentication: true, user : req.session.username });
+    else 
+        res.status(401).json({ message: `Authentication Failure!` });
+};
+
+export { registerUser, loginUser, logoutUser, checkAuth };

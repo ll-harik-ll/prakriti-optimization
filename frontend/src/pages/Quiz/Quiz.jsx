@@ -1,15 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-const fetchQuestion = async (id, setCurrentQuestion) => {
-    try {
-        const response = await fetch(`http://localhost:5000/api/questions/${id}`);
-        const data = await response.json();
-        setCurrentQuestion(data);
-    } catch (error) {
-        console.error(`Error Fetching Question: ${error}`);
-    }
-};
+import fetchQuestion from '../../services/question-service';
 
 const QuizPage = () => {
     const [currentQuestion, setCurrentQuestion] = useState(null); // Initialising Empty Object for Current Question
@@ -18,7 +9,7 @@ const QuizPage = () => {
 
     const navigate = useNavigate();
 
-    const handleNext = () => {
+    const handleNextQuestion = () => {
         const selected = document.querySelector('input[name="quiz-option"]:checked');
 
         if(selected) {
@@ -47,6 +38,8 @@ const QuizPage = () => {
         }
     }
 
+    // Adding this comment to see if moving fetchQuestion definition to services/ and leaving its call
+    // as is will work. If it doesn't work, have to change useEffect hook below to put fetchQ in a wrapper-loader
     useEffect(() => {
         fetchQuestion(questionIndex, setCurrentQuestion);
     }, [questionIndex]);
@@ -74,7 +67,7 @@ const QuizPage = () => {
                 :
                     <p>Loading Question...</p>
             }
-            <button onClick={handleNext}>Next</button>
+            <button onClick={handleNextQuestion}>Next</button>
         </div>
     );
 };

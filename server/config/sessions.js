@@ -17,9 +17,9 @@ const SESSION_MIDDLEWARE = async () => {
         store: STORE,
         cookie: {
             maxAge: 3*60*60*1000, // hrs * min * sec * ms
-            sameSite: 'lax',
+            sameSite: 'none',
             httpOnly: true,
-            secure: false
+            secure: true
         }
     });
 };

@@ -1,25 +1,18 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { logoutUser } from '../../services/account-service';
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(true);
     const navigate = useNavigate();
     const handleLogout = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/logout', {
-                method: 'POST',
-                credentials: 'include',
-                headers: { 'Content-type' : 'application.json' }
-            });
-
-            console.log(`Logout Status: ${response.status}`);
-            const data = await response.json().catch(()=>({}));
-            if (response.ok) {
+            const result = await logoutUser();
+    
+            if (result.ok)
                 navigate('/login');
-            } else {
-                console.error(`Logout Failed: ${data.message || `Unkown Error`}`);
-            }
-            
+            else
+                console.error(`Logout Failed: ${result.message || 'Unknown Error'}`);
         } catch (error) {
             console.error('Network Error : ${error.message}');
         }

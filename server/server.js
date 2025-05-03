@@ -1,4 +1,6 @@
 import express from 'express';
+import https from 'https';
+import fs from 'fs';
 
 import CORS_MIDDLEWARE from './config/cors.js';
 import SESSION_MIDDLEWARE from './config/sessions.js';
@@ -10,6 +12,10 @@ import reportRoute from './routes/report-route.js';
 import accountRoute from './routes/account-route.js';
 
 const app = express();
+const options = {
+    key:  fs.readFileSync('../certification/key.pem'),
+    cert: fs.readFileSync('../certification/cert.pem')
+};
 
 (async () => {
     // Connecting Mongoose
@@ -17,6 +23,7 @@ const app = express();
 
     // Setting Up Middleware
     app.use(CORS_MIDDLEWARE);
+    app.options('*',CORS_MIDDLEWARE);
     app.use(await SESSION_MIDDLEWARE());
     app.use(express.json());
 
@@ -26,7 +33,7 @@ const app = express();
     app.use('/api', accountRoute);
 
     // Starting Server
-    app.listen(PORT, () => {
+    https.createServer(options,app).listen(PORT, () => {
         console.log(`Server Running on port ${PORT}`);
     });
 })();

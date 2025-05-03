@@ -1,32 +1,18 @@
 import { useLocation } from 'react-router-dom';
+import sendReport from '../../services/report-service';
 
 const ConfirmPage = () => {
     const location = useLocation();
     const report = location.state?.report || [];
 
-    const sendReport = async () => {
-        try {
-            const response = await fetch(`http://localhost:5000/api/save-report`, {
-                method: 'POST',
-                credentials: 'include',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ responses: report })
-            });
+    // Moved sendReport function to services/ so and simply called it in button onClick
+    // with report passed as argument. If it doesn't work, maybe add a wrapper function to
+    // call sendReport within and then call wrapper in button onClick
     
-            if(response.ok) {
-                console.log("Report Saved Succesfully!");
-            } else {
-                console.error("Error Saving Report!");
-            }
-        } catch (error) {
-            console.error(`Error Sending Report: ${error}`);
-        }
-    };
-
     return (
         <div>
             <h2>Reay to Submit ?</h2>
-            <button onClick={sendReport}>Save & Submit</button>
+            <button onClick={sendReport(report)}>Save & Submit</button>
         </div>
     );
 }
