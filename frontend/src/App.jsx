@@ -5,7 +5,6 @@ import Layout from './pages/Layout';
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup";
-import Navbar from "./pages/Navbar/Navbar";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import StartPage from "./pages/Quiz/Start";
 import QuizPage from "./pages/Quiz/Quiz";
@@ -21,7 +20,7 @@ const App = () => {
                 <Route path="/signup" element={<Signup />} />
 
                 <Route path="/Layout" element={<Layout />} >
-                    <Route index element={<Home />} />
+                    <Route index element={<Dashboard />} />
                     <Route path="dashboard" element={<Dashboard />}/>
                     <Route path='Start' element={<StartPage />} />
                     <Route path='Quiz' element={<QuizPage />} />

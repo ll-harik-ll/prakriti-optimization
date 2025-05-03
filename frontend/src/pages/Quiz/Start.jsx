@@ -5,7 +5,7 @@ const StartPage = () => {
     return (
         <div>
             <h2>Ready to Start ?</h2>
-            <button onClick={() => {navigate('/Quiz')}}>Start</button>
+            <button onClick={() => {navigate('/Layout/Quiz')}}>Start</button>
         </div>
     )
 }

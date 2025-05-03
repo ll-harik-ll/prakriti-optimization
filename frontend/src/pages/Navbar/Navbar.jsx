@@ -1,19 +1,27 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(true);
     const navigate = useNavigate();
     const handleLogout = async () => {
         try {
-            const res = await axios.post(
-                `http://localhost:5000/api/logout`,
-                { withCredentials: true }
-            );
-            navigate('/login');
+            const response = await fetch('http://localhost:5000/api/logout', {
+                method: 'POST',
+                credentials: 'include',
+                headers: { 'Content-type' : 'application.json' }
+            });
+
+            console.log(`Logout Status: ${response.status}`);
+            const data = await response.json().catch(()=>({}));
+            if (response.ok) {
+                navigate('/login');
+            } else {
+                console.error(`Logout Failed: ${data.message || `Unkown Error`}`);
+            }
+            
         } catch (error) {
-            console.error(`Login Failed : ${error.message}`);
+            console.error('Network Error : ${error.message}');
         }
     };
 
@@ -21,16 +29,16 @@ function Navbar() {
         <nav className='bg-teal-600 text-zinc-400 p-4'>
             <div className='flex justify-between items-center'>
                 <Link to='/' className='text-lg font-bold'>Home</Link>
-                <button onClick={ () => setIsOpen(!isOpen) } className='text-zinc-400 font-bold'>
-                    { isOpen ? 'x' : '…'}
+                <button onClick={ () => setIsOpen(!isOpen) } className='text-zinc-400 font-bold w-fit'>
+                    { isOpen ? '^' : '…'}
                 </button>
             </div>
 
             { isOpen && (
                 <div className='flex flex-col gap-2 mt-2'>
-                    <Link to='/dashboard' onClick={ () => setIsOpen(false)}>Dashboard</Link>
-                    <Link to='/Start' onClick={ () => setIsOpen(false)}>Test Prakriti</Link>
-                    <Link to='/login' onClick={ () => handleLogout }>Logout</Link>
+                    <Link to='/Layout/dashboard' onClick={ () => setIsOpen(false)} className='bg-sky-300 text-blue-200 w-fit'>Dashboard</Link>
+                    <Link to='/Layout/Start' onClick={ () => setIsOpen(false)} className='bg-sky-300 text-blue-200 w-fit'>Test Prakriti</Link>
+                    <button to='/login' onClick={ () => handleLogout() } className='bg-pink-950 text-blue-200 w-fit'>Logout</button>
                 </div>
             )}
         </nav>
