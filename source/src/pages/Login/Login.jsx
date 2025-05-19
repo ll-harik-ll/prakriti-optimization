@@ -1,24 +1,24 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { loginUser } from '../../services/account-service';
 import "./styles.css";
 
 const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+    
     const handleLogin = async () => {
         try {
-            const res = await axios.post(
-                "http://localhost:5000/api/login",
-                { username, password },
-                { withCredentials: true }
-            );
-            
-            navigate("/Dashboard");
-        } catch (err) {
-            console.error("Login failed:",err.message);
+            const result = await loginUser(username, password);
+
+            if (result.ok)
+                navigate("/Layout/Dashboard");
+            else 
+                console.error(`Login Failed: ${result.message || 'Unknown Error'}`);
+        } catch (error) {
+            console.error(`Login Failed: ${error.message}`);
         }
     };
     

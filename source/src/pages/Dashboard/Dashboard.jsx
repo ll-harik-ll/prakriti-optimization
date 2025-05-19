@@ -1,6 +1,5 @@
 import React from "react";
 import "./Dashboard.css"
-import Navbar from "../Navbar/Navbar";
 import { useNavigate } from "react-router-dom";
 function Dashboard() {
     function scrollToNext(pageId) {
@@ -11,7 +10,6 @@ function Dashboard() {
 
     return (
         <>
-            <Navbar />
             <div className="card">
                 <div className="firstpage">
                     <div className="innercontainer">
@@ -82,7 +80,7 @@ function Dashboard() {
                     <h1 className="page3headings">KAPHAM</h1>
                 </div>
 
-                <button className="btncontent" onClick={() => {navigate('/Start')}}>TEST YOUR PRAKRUTI</button>
+                <button className="btncontent" onClick={() => {navigate('/Layout/Start')}}>TEST YOUR PRAKRUTI</button>
             </div>
         </>
     );
