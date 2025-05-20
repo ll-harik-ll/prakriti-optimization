@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { logoutUser } from '../../services/account-service';
+import { checkAuth, logoutUser } from '../../services/account-service';
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(true);
     const [isVisible, setIsVisible] = useState(true);
+    const [authentication, setAuthentication] = useState(false);
     const lastScrollY = useRef(0);
     const navigate = useNavigate();
     
@@ -28,12 +29,21 @@ function Navbar() {
     }
     , []);
 
+    useEffect(() => {
+        const verify = async () => {
+            const auth = await checkAuth();
+            setAuthentication(auth);
+        }
+
+        verify();
+    }, []);
+
     const handleLogout = async () => {
         try {
             const result = await logoutUser();
     
             if (result.ok)
-                navigate('/login');
+                navigate('/account');
             else
                 console.error(`Logout Failed: ${result.message || 'Unknown Error'}`);
         } catch (error) {
@@ -64,15 +74,23 @@ function Navbar() {
                 `}
             >
                 <div className="mt-4 flex flex-col space-y-2 text-[#4b2e12]">
-                    <Link to='/Layout/dashboard' onClick={ () => setIsOpen(false)} className="hover:text-[#8c5319] hover:underline">
+                    <Link to='/' onClick={ () => setIsOpen(false)} className="hover:text-[#8c5319] hover:underline">
                         Dashboard
                     </Link>
-                    <Link to='/Layout/Start' onClick={ () => setIsOpen(false)} className="hover:text-[#8c5319] hover:underline">
+                    <Link to='/Start' onClick={ () => setIsOpen(false)} className="hover:text-[#8c5319] hover:underline">
                         Test Prakriti
                     </Link>
-                    <button to='/login' onClick={ () => handleLogout() } className="text-left text-[#530303] hover:underline">
-                        Logout
-                    </button>
+                    {
+                        authentication 
+                        ? 
+                        <button onClick={ () => handleLogout() } className="text-left text-[#530303] hover:underline">
+                            Logout
+                        </button>
+                        :
+                        <button onClick={ () => handleLogout() } className="text-left text-[#530303] hover:underline">
+                            Login
+                        </button>
+                    }
                 </div>
             </div>
         </nav>

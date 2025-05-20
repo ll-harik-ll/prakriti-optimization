@@ -11,7 +11,7 @@ const Protected = ({ children }) => {
             const auth = await checkAuth();
             setAuthentication(auth);
             if (!auth )
-                navigate('/login');
+                navigate('/account');
         }
 
         verify();

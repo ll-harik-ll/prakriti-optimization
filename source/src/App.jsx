@@ -3,10 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Protected from './pages/Protected';
 import Layout from './pages/Layout';
-import Home from './pages/Home/Home';
+import Account from './pages/Account/Account';
 import Login from './pages/Login/Login';
 import Signup from './pages/Login/Signup';
-import Dashboard from './pages/Dashboard/Dashboard';
+import Home from './pages/Home/Home';
 import StartPage from './pages/Quiz/Start';
 import QuizPage from './pages/Quiz/Quiz';
 import ConfirmPage from './pages/Quiz/Confirm';
@@ -16,18 +16,16 @@ const App = () => {
     return (
         <>
             <Routes>
-                <Route path='/' element={<Home />} />
-                <Route path='/login' element={<Login />} />
-                <Route path='/signup' element={<Signup />} />
-
-                <Route path='/Layout' element={<Layout />} >
-                    <Route index element={<Protected><Dashboard /></Protected>} />
-                    <Route path='dashboard' element={<Protected><Dashboard /></Protected>}/>
+                <Route path='/' element={<Layout />}>
+                    <Route index element={<Home />} />
                     <Route path='Start' element={<Protected><StartPage /></Protected>} />
                     <Route path='Quiz' element={<Protected><QuizPage /></Protected>} />
                     <Route path='Confirm' element={<Protected><ConfirmPage /></Protected>} />
                 </Route>
 
+                <Route path='/account' element={<Account />} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/signup' element={<Signup />} />
                 <Route path='*' element={<NotFound />} />
             </Routes>
         </>

@@ -17,7 +17,7 @@ const Login = () => {
             const result = await loginUser(username, password);
 
             if (result.ok)
-                navigate("/Layout/Dashboard");
+                navigate("/");
             else 
                 console.error(`Login Failed: ${result.message || 'Unknown Error'}`);
         } catch (error) {

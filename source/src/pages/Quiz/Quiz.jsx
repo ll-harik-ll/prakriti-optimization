@@ -28,7 +28,7 @@ const QuizPage = () => {
                 setQuestionIndex((prev) => (prev + 1));
             }
             else {
-                navigate('/Layout/Confirm', { state: { report: updatedReport}})
+                navigate('/Confirm', { state: { report: updatedReport}})
             }
 
             selected.checked = false;

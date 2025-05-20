@@ -5,7 +5,7 @@ const ConfirmPage = () => {
     const location = useLocation();
     const report = location.state?.report || [];
 
-    // Moved sendReport function to services/ so and simply called it in button onClick
+    // Moved sendReport function to services/ and simply called it in button onClick
     // with report passed as argument. If it doesn't work, maybe add a wrapper function to
     // call sendReport within and then call wrapper in button onClick
     
