@@ -11,6 +11,7 @@ import StartPage from './pages/Quiz/Start';
 import QuizPage from './pages/Quiz/Quiz';
 import ConfirmPage from './pages/Quiz/Confirm';
 import NotFound from './pages/NotFound';
+import ResultPage from './pages/Results/Result';
 
 const App = () => {
     return (
@@ -21,6 +22,7 @@ const App = () => {
                     <Route path='Start' element={<Protected><StartPage /></Protected>} />
                     <Route path='Quiz' element={<Protected><QuizPage /></Protected>} />
                     <Route path='Confirm' element={<Protected><ConfirmPage /></Protected>} />
+                    <Route path='Result' element={<Protected><ResultPage /></Protected>} />
                 </Route>
 
                 <Route path='/account' element={<Account />} />

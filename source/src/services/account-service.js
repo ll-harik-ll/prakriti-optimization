@@ -40,7 +40,7 @@ const checkAuth = async () => {
 
         const data = await response.json().catch(() => ({}));
 
-        return data.authentication;
+        return data;
     } catch (error) {
         console.error(`Authentication Failure: ${ error }`);
         return false;

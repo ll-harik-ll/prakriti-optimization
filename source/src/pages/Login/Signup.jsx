@@ -17,11 +17,21 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("https://localhost:5000/api/register", formData);
+            const response = await fetch('https://localhost:5000/api/register', {
+                method : 'POST',
+                headers : { 'Content-Type' : 'application/json' },
+                body : JSON.stringify(formData),
+                credentials : 'include'
+            });
+
             alert("Signup successful!");
             navigate("/login");
+            
+            const data = await response.json().catch(() => ({}));
+            return { ok: response.ok, status: response.status, message: data.message || null };
         } catch (error) {
-            alert(error.response?.data?.error || "Error signing up");
+            console.error(`Network Error: ${error.message}`);
+            return { ok: false, error: error.message };
         }
     };
 

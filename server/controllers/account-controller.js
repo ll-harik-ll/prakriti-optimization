@@ -63,7 +63,7 @@ const logoutUser = (req, res) => {
 
 const checkAuth = (req,res) => {
     if (req.session.userID)
-        res.status(200).json({ authentication: true, user : req.session.username });
+        res.status(200).json({ authentication: true, username : req.session.username, userID : req.session.userID });
     else 
         res.status(401).json({ message: `Authentication Failure!` });
 };

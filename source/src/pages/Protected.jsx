@@ -9,8 +9,8 @@ const Protected = ({ children }) => {
     useEffect(() => {
         const verify = async () => {
             const auth = await checkAuth();
-            setAuthentication(auth);
-            if (!auth )
+            setAuthentication(auth.authentication);
+            if (!authentication )
                 navigate('/account');
         }
 

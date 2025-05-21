@@ -17,4 +17,18 @@ const sendReport = async (report) => {
     }
 };
 
-export default sendReport;
+const getReportByID = async (id) => {
+    try {
+        const report = await fetch(`https://localhost:5000/api/get-report/${id}`, {
+            method : 'GET',
+            credentials : 'include'
+        });
+
+        const data = await report.json().catch(() => ({}));
+        return data;
+    } catch (error) {
+        console.error(`Error Fetching Report: ${error}`);
+    }
+}
+
+export { sendReport, getReportByID };

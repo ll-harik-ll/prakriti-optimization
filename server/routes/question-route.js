@@ -5,6 +5,6 @@ import checkAuthMiddleware from '../middleware/auth-middleware.js';
 const router = express.Router();
 
 router.get('/questions', checkAuthMiddleware, GetAllQuestions);
-router.get('/questions/:id', checkAuthMiddleware, GetOneQuestion);
+router.get('/questions/:id', GetOneQuestion);
 
 export default router;

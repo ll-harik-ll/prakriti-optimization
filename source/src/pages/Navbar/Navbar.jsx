@@ -32,7 +32,7 @@ function Navbar() {
     useEffect(() => {
         const verify = async () => {
             const auth = await checkAuth();
-            setAuthentication(auth);
+            setAuthentication(auth.authentication);
         }
 
         verify();
