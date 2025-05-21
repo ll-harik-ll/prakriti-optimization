@@ -1,7 +1,5 @@
 import Reports from '../models/patient-reports.js';
 import EvaluateReport from '../services/report-evaluation.js';
-// below is temporary
-import mongoose from 'mongoose';
 
 const SaveReport = async (req, res) => {
     try {
