@@ -23,6 +23,8 @@ const App = () => {
                     <Route path='Quiz' element={<Protected><QuizPage /></Protected>} />
                     <Route path='Confirm' element={<Protected><ConfirmPage /></Protected>} />
                     <Route path='Last-Result' element={<Protected><ResultPage /></Protected>} />
+                    <Route path='Reports' element={<Protected><Report /></Protected>} />
+                    <Route path='ReportImage' element={<Protected><ReportImage /></Protected>} />
                 </Route>
 
                 <Route path='/account' element={<Account />} />

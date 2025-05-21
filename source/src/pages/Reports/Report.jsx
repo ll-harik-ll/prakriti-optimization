@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import{useNavigate} from 'react-router-dom';
-const Result = () => {
+const Report = () => {
     const [report, setReport] = useState([]);
     const navigate = useNavigate();
 
@@ -29,7 +29,7 @@ const Result = () => {
                     report.map((rep, index) => (
                         <div key={index}>
                             <p>NAME: {rep.name}</p>
-                            <button onClick={() => navigate('/Resultimage', { state: { report: rep } })}>
+                            <button onClick={() => navigate('/ReportImage', { state: { report: rep } })}>
                                 SEE YOUR PRAKRUTI
                             </button>
                         </div>
@@ -40,4 +40,4 @@ const Result = () => {
     );
 };
 
-export default Result;
+export default Report;

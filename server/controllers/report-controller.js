@@ -31,13 +31,15 @@ const GetAllReports = async (req, res) => {
 
 const GetReportByID = async (req, res) => {
     try {
-
-        if (!mongoose.Types.ObjectId.isValid(req.params.userID)) {
-            return res.status(400).json({ message: "Invalid userID format" });
+        const userID = req.session.userID;
+        if (!userID) {
+            return res.status(401).json({ message: "Unauthorized: No session found" });
         }
-        const report = await Reports.findOne({ userID : req.params.userID });
-        if(!report) {
-            return res.status(404).json({ message: `Report Not Found` });
+
+        const report = await Reports.find({ userID : userID });
+
+        if(!report || report.length === 0) {
+            return res.status(404).json({ message: `No reports found for this user` });
         }
         res.status(200).json(report);
     } catch (error) {
@@ -45,4 +47,21 @@ const GetReportByID = async (req, res) => {
     }
 };
 
-export { SaveReport, GetAllReports, GetReportByID };
+const GetDosha = async(req,res)=>{
+    try{
+        const userID = req.session.userID;
+        if (!userID) {
+            return res.status(401).json({ message: "Unauthorized: No session found" });
+        }
+        const doshaname= req.params.prakriti;
+        
+        const dosha= await Doshadescription.find({type:doshaname});
+        res.status(200).json(dosha);
+        
+    }
+    catch (error) {
+        res.status(500).json({ error: `Failed to fetch report: ${error}` });
+    }
+};
+
+export { SaveReport, GetAllReports, GetReportByID, GetDosha };

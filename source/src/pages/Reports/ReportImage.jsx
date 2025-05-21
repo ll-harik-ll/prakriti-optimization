@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { jsPDF } from 'jspdf';
 
-const Resultimage = () => {
+const ReportImage = () => {
     const location = useLocation();
     const report = location.state?.report || {};
     const navigate = useNavigate();
@@ -12,7 +12,7 @@ const Resultimage = () => {
     async function GetDoshaDesc() {
         const prakriti = report.prakriti;
         try {
-            const response = await fetch(`http://localhost:5000/api/dosha/${prakriti}`, {
+            const response = await fetch(`https://localhost:5000/api/dosha/${prakriti}`, {
                 method: 'GET',
                 credentials: 'include',
             });
@@ -82,4 +82,4 @@ const Resultimage = () => {
     );
 };
 
-export default Resultimage;
+export default ReportImage;

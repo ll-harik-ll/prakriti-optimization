@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const ResponseSchema = new mongoose.Schema({
-    question_id: { type: Number, required: true, unique: true },
+    question_id: { type: Number, required: true },
     question: { type: String, required: true },
     selected: { type: String, required: true } // 0 1 2 for V P K
 });

@@ -87,7 +87,10 @@ function Navbar() {
                             ? 
                             (<>
                                 <Link to='/Last-Result' onClick={ () => setIsOpen(false)} className="hover:text-[#8c5319] hover:underline">
-                                Latest Result
+                                    Latest Result
+                                </Link>
+                                <Link to='/Reports' onClick={ () => setIsOpen(false)} className="hover:text-[#8c5319] hover:underline">
+                                    Reports
                                 </Link>
                                 <button onClick={ () => handleLogout() } className="text-left text-[#530303] hover:underline">
                                     Logout
