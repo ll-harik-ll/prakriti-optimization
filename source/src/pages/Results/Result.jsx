@@ -15,13 +15,13 @@ const ResultPage = () => {
                 return;
             }
             
-            const report = await getReportByID(user.userID) || {};
-            console.log("Fetched report:", report);
-            if (report) {
-                setResponses(report.responses || []);
-                setPrakriti(report.prakriti || null);
+            const reports = await getReportByID() || [];
+            console.log("Fetched Latest Report:", reports[0]);
+            if (reports[0]) {
+                setResponses(reports[0].responses || []);
+                setPrakriti(reports[0].prakriti || null);
             }
-            console.log("Responses set to:", report.responses);
+            console.log("Responses set to:", reports[0].responses);
 
         }
 

@@ -1,4 +1,5 @@
 import Reports from '../models/patient-reports.js';
+import Doshadescription from '../models/doshadesc.js'
 import EvaluateReport from '../services/report-evaluation.js';
 
 const SaveReport = async (req, res) => {

@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { jsPDF } from 'jspdf';
 
+const buttonClass = "px-6 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition"
+
 const ReportImage = () => {
     const location = useLocation();
     const report = location.state?.report || {};
@@ -67,18 +69,18 @@ const ReportImage = () => {
     
 
     return (
-        <>
+        <div className='mt-56'>
             <h2>NAME: {report.name}</h2>
-            <button onClick={GetDoshaDesc}>WATCH YOUR PRAKRUTI</button>
+            <button onClick={GetDoshaDesc} className={buttonClass}>WATCH YOUR PRAKRUTI</button>
 
             {doshaDesc && (
                 <div style={{ marginTop: '20px' }}>
                     <h3>Your Prakriti: {report.prakriti}</h3>
                     <p>{doshaDesc}</p>
-                    <button onClick={generatePDF}>Download PDF</button>
+                    <button onClick={generatePDF} className={buttonClass}>Download PDF</button>
                 </div>
             )}
-        </>
+        </div>
     );
 };
 

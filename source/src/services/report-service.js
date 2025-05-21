@@ -17,7 +17,7 @@ const sendReport = async (report) => {
     }
 };
 
-const getReportByID = async (id) => {
+const getReportByID = async () => {
     try {
         const report = await fetch(`https://localhost:5000/api/reports`, {
             method : 'GET',
