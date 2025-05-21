@@ -12,6 +12,8 @@ import QuizPage from './pages/Quiz/Quiz';
 import ConfirmPage from './pages/Quiz/Confirm';
 import NotFound from './pages/NotFound';
 import ResultPage from './pages/Results/Result';
+import Report from './pages/Reports/Report';
+import ReportImage from './pages/Reports/ReportImage'
 
 const App = () => {
     return (
