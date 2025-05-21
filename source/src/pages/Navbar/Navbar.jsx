@@ -6,6 +6,7 @@ function Navbar() {
     const [isOpen, setIsOpen] = useState(true);
     const [isVisible, setIsVisible] = useState(true);
     const [authentication, setAuthentication] = useState(false);
+    const [authChecked, setAuthChecked] = useState(false);
     const lastScrollY = useRef(0);
     const navigate = useNavigate();
     
@@ -33,8 +34,8 @@ function Navbar() {
         const verify = async () => {
             const auth = await checkAuth();
             setAuthentication(auth.authentication);
-        }
-
+            setAuthChecked(true);
+        };
         verify();
     }, []);
 
@@ -81,15 +82,22 @@ function Navbar() {
                         Test Prakriti
                     </Link>
                     {
-                        authentication 
-                        ? 
-                        <button onClick={ () => handleLogout() } className="text-left text-[#530303] hover:underline">
-                            Logout
-                        </button>
-                        :
-                        <button onClick={ () => handleLogout() } className="text-left text-[#530303] hover:underline">
-                            Login
-                        </button>
+                        authChecked && (
+                            authentication 
+                            ? 
+                            (<>
+                                <Link to='/Last-Result' onClick={ () => setIsOpen(false)} className="hover:text-[#8c5319] hover:underline">
+                                Latest Result
+                                </Link>
+                                <button onClick={ () => handleLogout() } className="text-left text-[#530303] hover:underline">
+                                    Logout
+                                </button>
+                            </>)
+                            :
+                            <button onClick={ () => handleLogout() } className="text-left text-[#530303] hover:underline">
+                                Login
+                            </button>
+                        )
                     }
                 </div>
             </div>

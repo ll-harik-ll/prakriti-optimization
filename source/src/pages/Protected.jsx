@@ -10,7 +10,7 @@ const Protected = ({ children }) => {
         const verify = async () => {
             const auth = await checkAuth();
             setAuthentication(auth.authentication);
-            if (!authentication )
+            if (!auth.authentication )
                 navigate('/account');
         }
 
