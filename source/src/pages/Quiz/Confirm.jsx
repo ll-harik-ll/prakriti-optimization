@@ -9,7 +9,7 @@ const ConfirmPage = () => {
     const handleSubmit = async () => {
         try {
             await sendReport(report);
-            navigate('/Result', { state: { report } });
+            navigate('/Last-Result', { state: { report } });
         } catch (error) {
             alert('Failed to submit!');
         }
