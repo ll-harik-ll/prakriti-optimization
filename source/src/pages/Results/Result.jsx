@@ -31,7 +31,7 @@ const ResultPage = () => {
     console.log("responses state in render:", responses);
 
     return (
-        <div className="mt-40 px-6 max-w-3xl mx-auto space-y-8">
+        <div className="my-12 px-6 max-w-3xl mx-auto space-y-8">
             <h2 className="text-3xl font-bold text-center text-[#2f3e46]">Your Quiz Report</h2>
             <div className="space-y-6">
             {

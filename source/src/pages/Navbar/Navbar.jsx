@@ -55,7 +55,7 @@ function Navbar() {
     return (
         <nav
             className={`
-                bg-gradient-to-r from-[#a8c66c] to-[#e6b980] px-6 py-4 shadow-md fixed top-0 w-full z-50 transition-transform duration-500 ease-in-out
+                bg-gradient-to-r from-[#a8c66c] to-[#e6b980] p-6 shadow-md sticky top-0 w-full z-50 transition-transform duration-500 ease-in-out
                 ${isVisible ? 'translate-y-0' : '-translate-y-full'}
             `}
         >
@@ -71,7 +71,7 @@ function Navbar() {
             <div
                 className={`
                     transform transition-all duration-500 ease-in-out overflow-hidden
-                    ${isOpen ? 'opacity-100 max-h-40 translate-y-0' : 'opacity-0 max-h-0 -translate-y-2'}
+                    ${isOpen ? 'opacity-100 max-h-42 translate-y-0' : 'opacity-0 max-h-0 -translate-y-2'}
                 `}
             >
                 <div className="mt-4 flex flex-col space-y-2 text-[#4b2e12]">

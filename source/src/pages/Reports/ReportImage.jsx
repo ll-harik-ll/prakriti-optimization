@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { jsPDF } from 'jspdf';
 
-const buttonClass = "px-6 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition"
+const buttonClass = "px-6 py-2 my-4 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition"
 
 const ReportImage = () => {
     const location = useLocation();
@@ -69,7 +69,7 @@ const ReportImage = () => {
     
 
     return (
-        <div className='mt-56'>
+        <div className='-mt-50 flex flex-col justify-center items-center text-center space-y-8 min-h-screen'>
             <h2>NAME: {report.name}</h2>
             <button onClick={GetDoshaDesc} className={buttonClass}>WATCH YOUR PRAKRUTI</button>
 
